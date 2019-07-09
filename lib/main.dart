@@ -2,20 +2,13 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/services.dart';
 
 import 'models/transaction.dart';
-
 import 'widgets/chart.dart';
 import 'widgets/new_transaction.dart';
 import 'widgets/transaction_list.dart';
 
 void main() {
-  SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
-    DeviceOrientation.portraitDown,
-  ]);
   runApp(MyApp());
 }
 
@@ -27,7 +20,6 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
         accentColor: Colors.amber,
-        errorColor: Colors.red,
         fontFamily: 'Quicksand',
         textTheme: ThemeData.light().textTheme.copyWith(
               title: TextStyle(
@@ -47,11 +39,6 @@ class MyApp extends StatelessWidget {
               ),
         ),
       ),
-      // locale: const Locale('pt', 'BR'),
-      supportedLocales: [
-        const Locale('pt', 'BR'),
-        const Locale('en', 'US'),
-      ],
       home: MyHomePage(),
     );
   }
@@ -130,27 +117,28 @@ class _MyHomePageState extends State<MyHomePage> {
 
     final PreferredSizeWidget appBar = Platform.isIOS
         ? CupertinoNavigationBar(
-            middle: Text('Personal Expenses'),
+            middle: Text(
+              'Personal Expenses',
+            ),
             trailing: Row(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 GestureDetector(
                   child: Icon(CupertinoIcons.add),
                   onTap: () => _startAddNewTransaction(context),
-                )
+                ),
               ],
             ),
           )
         : AppBar(
             title: Text(
               'Personal Expenses',
-              style: TextStyle(fontFamily: 'Open Sans'),
             ),
             actions: <Widget>[
               IconButton(
                 icon: Icon(Icons.add),
                 onPressed: () => _startAddNewTransaction(context),
-              )
+              ),
             ],
           );
 
