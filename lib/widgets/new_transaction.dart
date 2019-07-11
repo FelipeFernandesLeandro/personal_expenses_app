@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -9,7 +7,7 @@ import 'adaptive_flat_button.dart';
 class NewTransction extends StatefulWidget {
   final Function createNewTransaction;
 
-  NewTransction(this.createNewTransaction);
+  const NewTransction(this.createNewTransaction);
 
   @override
   _NewTransctionState createState() => _NewTransctionState();
@@ -68,12 +66,12 @@ class _NewTransctionState extends State<NewTransction> {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: <Widget>[
                 TextField(
-                  decoration: InputDecoration(labelText: 'Title'),
+                  decoration: const InputDecoration(labelText: 'Title'),
                   controller: _titleController,
                 ),
                 TextField(
                   keyboardType: TextInputType.number,
-                  decoration: InputDecoration(labelText: 'Amount'),
+                  decoration: const InputDecoration(labelText: 'Amount'),
                   onSubmitted: (_) => _submitData(),
                   controller: _amountController,
                 ),
@@ -93,7 +91,7 @@ class _NewTransctionState extends State<NewTransction> {
                   ),
                 ),
                 RaisedButton(
-                  child: Text('Add Transaction'),
+                  child: const Text('Add Transaction'),
                   onPressed: _submitData,
                   color: Theme.of(context).primaryColor,
                   textColor: Theme.of(context).textTheme.button.color,
